@@ -1,0 +1,4 @@
+agent,average_score,first_place_rate_percent,sample_count
+Random agent (P0),1.7333333333333334,30.0,30
+DQN (P0),2.0,33.33333333333333,30
+Generative augmentation (P0),1.8333333333333333,36.666666666666664,30
