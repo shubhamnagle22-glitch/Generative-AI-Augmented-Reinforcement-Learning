@@ -1,8 +1,8 @@
-# Chef's Hat RL — Generative AI Augmentation
+﻿# Generative AI-Augmented Reinforcement Learning for Chef's Hat
 
 ## Assignment
 - Module: Generative AI and Reinforcement Learning
-- Task 2 variant: Variant 6 — Generative AI Augmentation
+- Task 2 variant: Variant 6 - Generative AI Augmentation
 - Environment: Chef's Hat Gym
 - Language: Python
 
@@ -44,3 +44,5 @@ Install dependencies:
 
 ```powershell
 pip install chefshatgym==3.0.0.1 gym==0.26.2 torch numpy pandas matplotlib
+
+
