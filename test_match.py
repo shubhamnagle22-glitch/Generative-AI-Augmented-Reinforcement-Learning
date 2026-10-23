@@ -1,5 +1,5 @@
-
 import gym
+from pathlib import Path
 import numpy as np
 import ChefsHatGym.env
 
@@ -10,7 +10,7 @@ game.startExperiment(
     gameType="POINTS",
     stopCriteria=1,
     playerNames=["P0", "P1", "P2", "P3"],
-    logDirectory=r"D:\Coventry\Generative AI-Augmented Reinforcement Learning for Chef’s Hat\logs\test_match",
+    logDirectory=str(Path(__file__).resolve().parent / "logs" / "test_match"),
     verbose=0,
     saveLog=False,
     saveDataset=False,
@@ -41,7 +41,9 @@ print("Match over:", terminated)
 print("Last reward:", reward)
 print("Match score:", info.get("Match_Score"))
 print("Accumulated score:", info.get("Game_Score"))
-print("Finishing positions:",
-      [p.finishing_position for p in game.players])
+print(
+    "Finishing positions:",
+    [p.finishing_position for p in game.players],
+)
 
 env.close()
