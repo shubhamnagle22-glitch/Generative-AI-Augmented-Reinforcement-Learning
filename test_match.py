@@ -10,7 +10,7 @@ game.startExperiment(
     gameType="POINTS",
     stopCriteria=1,
     playerNames=["P0", "P1", "P2", "P3"],
-    logDirectory=r"D:\ChefsHat-RL-Task2\logs\test_match",
+    logDirectory=r"D:\Coventry\Generative AI-Augmented Reinforcement Learning for Chef’s Hat\logs\test_match",
     verbose=0,
     saveLog=False,
     saveDataset=False,
