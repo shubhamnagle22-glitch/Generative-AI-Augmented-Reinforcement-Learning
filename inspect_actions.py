@@ -1,7 +1,13 @@
+import os
 
 import gym
 import numpy as np
 import ChefsHatGym.env
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_DIR = os.path.join(PROJECT_DIR, "logs", "step_test")
+os.makedirs(LOG_DIR, exist_ok=True)
+
 
 env = gym.make("chefshat-v1")
 game = env.unwrapped
@@ -11,7 +17,7 @@ try:
         gameType="POINTS",
         stopCriteria=1,
         playerNames=["P0", "P1", "P2", "P3"],
-        logDirectory=r"D:\ChefsHat-RL-Task2\logs\step_test",
+        logDirectory=LOG_DIR,
         verbose=0,
         saveLog=False,
         saveDataset=False,

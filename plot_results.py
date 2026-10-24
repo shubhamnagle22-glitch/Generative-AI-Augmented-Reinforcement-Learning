@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-PROJECT_DIR = r"D:\ChefsHat-RL-Task2"
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(PROJECT_DIR, "plots")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

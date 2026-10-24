@@ -1,61 +1,60 @@
-﻿# Generative AI-Augmented Reinforcement Learning for Chef's Hat
+# Generative AI-Augmented Reinforcement Learning for Chef's Hat
 
 ## Assignment
+
 - **Module:** Generative AI and Reinforcement Learning
-- **Task 2 variant:** Variant 6 - Generative AI Augmentation
-- **Environment:** Chef's Hat Gym
+- **Task:** 2
+- **Assigned variant:** Variant 6 - Generative AI Augmentation
+- **Environment:** Chef's Hat Gym (`chefshat-v1`)
 - **Language:** Python
 
-## Project Overview
+Confirm that Variant 6 matches your student ID modulo 7 before submission.
 
-This project investigates whether a learned action-prior model can augment a Deep Q-Network (DQN) agent playing Chef's Hat.
+## Project overview
 
-The augmentation combines DQN action scores with learned action-prior scores. Legal-action masking prevents the agent from selecting illegal moves.
+This project tests whether a learned action-prior model can augment a Deep Q-Network (DQN) playing Chef's Hat. Legal-action masking prevents the agent from selecting invalid moves.
 
-## Experiments
+The `ActionPriorGenerator` maps an observed game state to scores over the 200 possible actions. It is trained with cross-entropy on 5,000 state/action examples collected from random legal play. The resulting scores can be interpreted as a learned, state-conditional distribution over actions, `p(action | state)`. During play, normalized action-prior scores are combined with normalized DQN scores (80% DQN, 20% prior), then the highest-scoring legal action is selected.
 
-1. Random baseline: 30 matches.
-2. DQN training and evaluation.
-3. DQN self-play evaluation: 30 matches.
-4. DQN versus random opponents, compared with a random-agent baseline: 30 matches per condition.
-5. Learned action-prior augmentation: 30 matches.
+Here, “generative” refers to producing a conditional distribution over possible actions. This is a small action-prior model, not a text-generating model or a pretrained language model. Because its demonstrations come from random play, it may learn unhelpful preferences; the experiments do not establish that the augmentation improves the DQN.
 
-## Results
+## Experiments and results
 
-| Agent / condition | Average score | First-place rate | Matches |
-|---|---:|---:|---:|
-| Random agent (P0) | 1.73 | 30.0% | 30 |
-| DQN (P0) | 2.00 | 33.3% | 30 |
-| Generative augmentation (P0) | 1.83 | 36.7% | 30 |
+All reported rows use 30 matches. Results come from the checked-in CSV files. “First-place rate” is the percentage of matches in which P0 finished first.
 
-The augmentation condition achieved a higher first-place rate than the random baseline and the DQN evaluation in these runs. The DQN had the highest average score. These results are preliminary and do not establish statistical significance.
+| Condition | P0 policy | Other players | Average P0 score | P0 first-place rate | Matches |
+|---|---|---|---:|---:|---:|
+| Random vs random | Random | 3 random | 1.73 | 30.0% | 30 |
+| DQN self-play | DQN | 3 DQN | 2.00 | 33.3% | 30 |
+| DQN vs random | DQN | 3 random | 2.23 | 60.0% | 30 |
+| DQN + action prior vs random | DQN + prior | 3 random | 1.83 | 36.7% | 30 |
 
-## Generated Outputs
+These are separate exploratory runs, not a matched head-to-head comparison: they use different seed ranges and there are no confidence intervals or significance tests. The DQN-versus-random result is the strongest of these runs. The augmentation result does not show a reliable gain over DQN; rerun both policies with the same match seeds and opponents before drawing a comparative conclusion.
 
-The `plots/` directory contains:
-- `average_score.png`
-- `first_place_rate.png`
-- `score_distribution.png`
-- `summary.csv`
+## Repository contents
 
-CSV files store experimental results. Model checkpoints are saved as `.pth` files.
+- `train_dqn.py`: trains the DQN and saves its checkpoint and match results.
+- `evaluate_dqn.py`: evaluates DQN self-play.
+- `compare_agents.py`: compares DQN versus random with a random-versus-random baseline.
+- `generative_augmentation.py`: trains the action prior and evaluates the augmented policy.
+- `random_baseline.py`: runs a separate random baseline.
+- `plot_results.py` and `plots/`: generates plots from the saved result files.
+- CSV files: recorded experiment results.
+- `.pth` files: saved model checkpoints.
 
-## Requirements
+## Requirements and setup
 
-Python 3.11 is recommended.
-
-Install dependencies:
+Python 3.11 is recommended. From the repository directory, install the pinned dependencies:
 
 ```powershell
-pip install chefshatgym==3.0.0.1 gym==0.26.2 torch numpy pandas matplotlib
+python -m pip install -r requirements.txt
 ```
 
-## Running the Project
+## Running the experiments
 
-Run the scripts from the project directory with the required dependencies installed:
+Run from the repository directory. Scripts save logs, checkpoints, plots, and CSV outputs under this directory.
 
 ```powershell
-python random_baseline.py
 python train_dqn.py
 python evaluate_dqn.py
 python compare_agents.py
@@ -63,15 +62,20 @@ python generative_augmentation.py
 python plot_results.py
 ```
 
-Some scripts train models or regenerate result files. Running them may overwrite existing outputs.
+`generative_augmentation.py` requires the checkpoint created by `train_dqn.py`. Running training or evaluation scripts may overwrite existing checkpoints and result files.
+
+## Viva video
+
+Add the 3–5 minute Task 2 viva video link here before submission. The video should explain the environment and variant, demonstrate the trained agent, present the experiments, and discuss limitations and improvements.
 
 ## Limitations
 
-- Experiments use 30 matches per reported condition, so results may vary between runs.
-- The results do not establish statistical significance.
-- The action-prior model is a learned model trained from synthetic demonstrations; it is not a large language model.
-- Performance may depend on training settings, random seeds, and the opponents used.
+- Each reported condition has 30 matches; results can vary by seed and opponent behaviour.
+- The experiments do not establish statistical significance.
+- The action-prior demonstrations are generated by random legal play, not expert play.
+- The action prior is a small conditional action model, not a pretrained LLM.
+- The project has not yet run a same-seed, same-opponent comparison of DQN against DQN plus action prior.
 
-## AI Assistance Disclosure
+## AI assistance disclosure
 
-AI assistance was used to support coding, debugging, and documentation. The project code and experimental results should be reviewed and understood by the student.
+AI assistance was used to review and update the README and to make output paths portable across computers. The student should review, understand, and be prepared to explain all code and results in the repository.

@@ -11,7 +11,8 @@ import ChefsHatGym.env
 
 NUM_MATCHES = 30
 BASE_SEED = 42
-LOG_DIR = r"D:\ChefsHat-RL-Task2\logs\random_baseline"
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_DIR = os.path.join(PROJECT_DIR, "logs", "random_baseline")
 
 os.makedirs(LOG_DIR, exist_ok=True)
 

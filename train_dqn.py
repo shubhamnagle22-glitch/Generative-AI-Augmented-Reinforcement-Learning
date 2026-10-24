@@ -33,7 +33,7 @@ EPSILON_START = 1.0
 EPSILON_MIN = 0.10
 EPSILON_DECAY = 0.97
 
-PROJECT_DIR = r"D:\ChefsHat-RL-Task2"
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_DIR = os.path.join(PROJECT_DIR, "logs", "dqn_training")
 MODEL_PATH = os.path.join(PROJECT_DIR, "dqn_model.pth")
 RESULTS_PATH = os.path.join(

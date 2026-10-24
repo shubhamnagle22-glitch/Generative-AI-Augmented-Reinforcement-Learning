@@ -20,7 +20,7 @@ STATE_SIZE = 228
 ACTION_SIZE = 200
 HIDDEN_SIZE = 128
 
-PROJECT_DIR = r"D:\ChefsHat-RL-Task2"
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(PROJECT_DIR, "dqn_model.pth")
 LOG_DIR = os.path.join(PROJECT_DIR, "logs", "dqn_evaluation")
 RESULTS_PATH = os.path.join(
