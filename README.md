@@ -1,14 +1,15 @@
-# Generative AI-Augmented Reinforcement Learning for Chef's Hat
+﻿# Generative AI-Augmented Reinforcement Learning for Chef's Hat
 
 ## Assignment
 
 - **Module:** Generative AI and Reinforcement Learning
+- **Student ID:** 17510758
 - **Task:** 2
 - **Assigned variant:** Variant 6 - Generative AI Augmentation
 - **Environment:** Chef's Hat Gym (`chefshat-v1`)
 - **Language:** Python
 
-Confirm that Variant 6 matches your student ID modulo 7 before submission.
+Student ID check: 17510758 modulo 7 equals 6, which matches Variant 6.
 
 ## Project overview
 
@@ -38,7 +39,7 @@ These are separate exploratory runs, not a matched head-to-head comparison: they
 - `compare_agents.py`: compares DQN versus random with a random-versus-random baseline.
 - `generative_augmentation.py`: trains the action prior and evaluates the augmented policy.
 - `random_baseline.py`: runs a separate random baseline.
-- `plot_results.py` and `plots/`: generates plots from the saved result files.
+- `plot_results.py` and `plots/`: generate plots from the saved result files.
 - CSV files: recorded experiment results.
 - `.pth` files: saved model checkpoints.
 
@@ -66,7 +67,7 @@ python plot_results.py
 
 ## Viva video
 
-Add the 3–5 minute Task 2 viva video link here before submission. The video should explain the environment and variant, demonstrate the trained agent, present the experiments, and discuss limitations and improvements.
+Add the Task 2 viva video link here before submission. The video should explain the environment and variant, demonstrate the trained agent, present the experiments, and discuss limitations and improvements.
 
 ## Limitations
 
@@ -76,6 +77,6 @@ Add the 3–5 minute Task 2 viva video link here before submission. The video sh
 - The action prior is a small conditional action model, not a pretrained LLM.
 - The project has not yet run a same-seed, same-opponent comparison of DQN against DQN plus action prior.
 
-## AI assistance disclosure
+## AI assistance declaration
 
-AI assistance was used to review and update the README and to make output paths portable across computers. The student should review, understand, and be prepared to explain all code and results in the repository.
+AI coding assistants like ChatGPT helped out with writing Python code, troubleshooting bugs, breaking down tough technical concepts, and putting together the project documentation.
