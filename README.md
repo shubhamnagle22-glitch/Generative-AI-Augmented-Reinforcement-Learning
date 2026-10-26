@@ -65,9 +65,6 @@ python plot_results.py
 
 `generative_augmentation.py` requires the checkpoint created by `train_dqn.py`. Running training or evaluation scripts may overwrite existing checkpoints and result files.
 
-## Viva video
-
-Add the Task 2 viva video link here before submission. The video should explain the environment and variant, demonstrate the trained agent, present the experiments, and discuss limitations and improvements.
 
 ## Limitations
 
